@@ -40,7 +40,16 @@ def add_post():
         save_posts(posts)
         # Redirect to the home page.
         return redirect(url_for('home'))
+    # Render the add post form.
     return render_template('add.html')
+
+@app.route('/delete/<post_id>', methods=['POST'])
+def delete_post(post_id):
+    """Delete the specified blog post and redirect to the home page."""
+    posts = load_posts()
+    posts = [post for post in posts if post['id'] != post_id]
+    save_posts(posts)
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     # Run the Flask development server.

@@ -92,3 +92,19 @@ a:hover {
     background-color: #333;
     text-decoration: none;
 }
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #FF4136;
+    color: #FFF;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.delete-button:hover {
+    background-color: #FF1A1A;
+}
