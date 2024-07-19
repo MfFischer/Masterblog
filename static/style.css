@@ -51,7 +51,6 @@ input[type="text"], textarea {
     padding: 8px;
     border: 1px solid #DDD;
     border-radius: 4px;
-    box-sizing: border-box;
 }
 
 button {
@@ -61,7 +60,6 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
 }
 
 button:hover {
@@ -127,11 +125,28 @@ a:hover {
     display: inline-block;
     margin: 0 10px;
     cursor: pointer;
-
+    outline: none; /* Remove outline on focus */
 }
 
 .delete-button:hover {
     background-color: #FF1A1A;
+}
+
+.like-button {
+    background-color: #007BFF;
+    color: #FFF;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+    outline: none; /* Remove outline on focus */
+}
+
+.like-button:hover {
+    background-color: #0056b3;
 }
 
 /* Ensure all buttons look the same, even inside forms */
@@ -142,5 +157,5 @@ form button {
     border: none;
     border-radius: inherit;
     cursor: pointer;
-
+    outline: none; /* Remove outline on focus */
 }

@@ -9,7 +9,11 @@ def load_posts():
     """Load posts from a JSON file."""
     try:
         with open('posts.json', 'r') as f:
-            return json.load(f)
+            posts = json.load(f)
+            for post in posts:
+                if 'likes' not in post:
+                    post['likes'] = 0
+            return posts
     except FileNotFoundError:
         return []
 
@@ -45,7 +49,8 @@ def add_post():
             'id': str(uuid.uuid4()),  # Generate a unique ID for the new post.
             'title': request.form.get('title'),
             'author': request.form.get('author'),
-            'content': request.form.get('content')
+            'content': request.form.get('content'),
+            'likes': 0  # Initialize likes to 0
         }
         # Load existing posts, add the new post, and save the updated list.
         posts = load_posts()
@@ -68,6 +73,7 @@ def delete_post(post_id):
 
 @app.route('/update/<post_id>', methods=['GET', 'POST'])
 def update_post(post_id):
+    """Update the specified blog post."""
     post = fetch_post_by_id(post_id)
     if post is None:
         return "Post not found", 404
@@ -78,14 +84,26 @@ def update_post(post_id):
         post['content'] = request.form['content']
 
         posts = load_posts()
-        for i, existing_post in enumerate(posts):
-            if existing_post['id'] == post_id:
+        for i, p in enumerate(posts):
+            if p['id'] == post_id:
                 posts[i] = post
                 break
         save_posts(posts)
         return redirect(url_for('home'))
 
     return render_template('update.html', post=post)
+
+
+@app.route('/like/<post_id>', methods=['POST'])
+def like_post(post_id):
+    """Increment the likes of the specified blog post."""
+    posts = load_posts()
+    for post in posts:
+        if post['id'] == post_id:
+            post['likes'] += 1
+            break
+    save_posts(posts)
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':

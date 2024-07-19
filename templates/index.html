@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask Blog</title>
+    <title>Welcome to My Flask Blog</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -12,17 +12,20 @@
     <a href="{{ url_for('add_post') }}" class="add-post-link">Add New Post</a>
 
     {% for post in posts %}
-        <div class="post">
-            <h2>{{ post.title }}</h2>
-            <p><em>Written by {{ post.author }}</em></p>
-            <p>{{ post.content }}</p>
-            <div class="button-container">
-                <a href="{{ url_for('update_post', post_id=post.id) }}" class="update-button">Update</a>
-                <form action="{{ url_for('delete_post', post_id=post.id) }}" method="post" style="display:Inline-Block;">
-                    <button type="submit" class="delete-button">Delete</button>
-                </form>
-            </div>
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <p><em>Written by {{ post.author }}</em></p>
+        <p>{{ post.content }}</p>
+        <div class="button-container">
+            <a href="{{ url_for('update_post', post_id=post.id) }}" class="update-button">Update</a>
+            <form action="{{ url_for('delete_post', post_id=post.id) }}" method="post" style="display:inline;">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+            <form action="{{ url_for('like_post', post_id=post.id) }}" method="post" style="display:inline;">
+                <button type="submit" class="like-button">Like ({{ post.likes }})</button>
+            </form>
         </div>
+    </div>
     {% endfor %}
 </body>
 </html>
