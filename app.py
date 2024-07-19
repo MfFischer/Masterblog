@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
 import uuid
+import os
 
 app = Flask(__name__)
 
@@ -108,4 +109,5 @@ def like_post(post_id):
 
 if __name__ == '__main__':
     # Run the Flask development server.
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, port=5000)

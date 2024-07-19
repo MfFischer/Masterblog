@@ -108,7 +108,7 @@ a:hover {
     display: inline-block;
     margin: 0 10px;
     cursor: pointer;
-    outline: none; /* Remove outline on focus */
+    outline: none;
 }
 
 .update-button:hover {
@@ -125,7 +125,7 @@ a:hover {
     display: inline-block;
     margin: 0 10px;
     cursor: pointer;
-    outline: none; /* Remove outline on focus */
+    outline: none;
 }
 
 .delete-button:hover {
@@ -142,14 +142,14 @@ a:hover {
     display: inline-block;
     margin: 0 10px;
     cursor: pointer;
-    outline: none; /* Remove outline on focus */
+    outline: none;
 }
 
 .like-button:hover {
     background-color: #0056b3;
 }
 
-/* Ensure all buttons look the same, even inside forms */
+
 form button {
     background-color: inherit;
     color: inherit;
@@ -157,5 +157,5 @@ form button {
     border: none;
     border-radius: inherit;
     cursor: pointer;
-    outline: none; /* Remove outline on focus */
+    outline: none;
 }
