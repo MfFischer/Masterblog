@@ -68,20 +68,18 @@ def delete_post(post_id):
 
 @app.route('/update/<post_id>', methods=['GET', 'POST'])
 def update_post(post_id):
-    """Update the specified blog post."""
     post = fetch_post_by_id(post_id)
     if post is None:
         return "Post not found", 404
 
     if request.method == 'POST':
-        # Update the post with form data.
-        post['title'] = request.form.get('title')
-        post['author'] = request.form.get('author')
-        post['content'] = request.form.get('content')
-        # Load all posts, update the specific post, and save them back.
+        post['title'] = request.form['title']
+        post['author'] = request.form['author']
+        post['content'] = request.form['content']
+
         posts = load_posts()
-        for i, p in enumerate(posts):
-            if p['id'] == post_id:
+        for i, existing_post in enumerate(posts):
+            if existing_post['id'] == post_id:
                 posts[i] = post
                 break
         save_posts(posts)

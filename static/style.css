@@ -31,7 +31,7 @@ form {
     border: 1px solid #DDD;
     padding: 20px;
     border-radius: 8px;
-    max-width: 500px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -51,6 +51,7 @@ input[type="text"], textarea {
     padding: 8px;
     border: 1px solid #DDD;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
 button {
@@ -60,7 +61,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    outline: none; /* Remove outline on focus */
+
 }
 
 button:hover {
@@ -126,7 +127,7 @@ a:hover {
     display: inline-block;
     margin: 0 10px;
     cursor: pointer;
-    outline: none; /* Remove outline on focus */
+
 }
 
 .delete-button:hover {
@@ -141,5 +142,5 @@ form button {
     border: none;
     border-radius: inherit;
     cursor: pointer;
-    outline: none; /* Remove outline on focus */
+
 }
